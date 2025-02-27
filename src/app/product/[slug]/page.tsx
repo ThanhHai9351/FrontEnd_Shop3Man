@@ -1,17 +1,19 @@
+import ProductDetailPage from '@/app/product/[slug]/product-detail-page';
 import React from 'react';
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
+    const { slug } = await Promise.resolve(params);
     return {
-        title: params.slug,
-        description: params.slug,
+        title: slug,
+        description: slug,
     };
 }
 
-const Page = ({ params }: { params: { slug: string } }) => {
+
+const Page = async ({ params }: { params: { slug: string } }) => {
+    const { slug } = await Promise.resolve(params);
     return (
-        <div>
-            <h1>Product {params.slug}</h1>
-        </div>
+        <ProductDetailPage slug={slug} />
     );
 }
 
