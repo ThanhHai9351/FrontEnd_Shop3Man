@@ -2,17 +2,16 @@ import React from 'react';
 import CategoryDetailPage from './category-detail-page';
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
+    const { slug } = await Promise.resolve(params);
     return {
-        title: params.slug,
-        description: params.slug,
+        title: slug,
+        description: slug,
     };
 }
 
 
-const Page = ({ params }: { params: { slug: string } }) => {
-    return (
-        <CategoryDetailPage slug={params.slug} />
-    );
+export default async function Page({ params }: { params: { slug: string } }) {
+    const { slug } = await Promise.resolve(params);
+    return <CategoryDetailPage slug={slug} />;
 }
 
-export default Page;
