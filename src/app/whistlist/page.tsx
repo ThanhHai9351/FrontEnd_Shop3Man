@@ -1,5 +1,6 @@
 import React from 'react';
 import { Metadata } from 'next';
+import WhistlistPage from '@/app/whistlist/whistlist-page';
 
 export const metadata: Metadata = {
     title: "Danh sách yêu thích",
@@ -8,9 +9,7 @@ export const metadata: Metadata = {
 
 const Page = () => {
     return (
-        <div>
-            whistlist
-        </div>
+        <WhistlistPage />
     );
 }
 

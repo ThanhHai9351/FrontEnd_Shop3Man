@@ -40,3 +40,11 @@ export interface ISize {
     stockQuantity: number
     price: number
   }
+
+  export interface IWhistlist {
+    _id: string;
+    product: IProduct;
+    userId: string;
+    createdAt: string;  
+    updatedAt: string;
+   }
