@@ -22,7 +22,12 @@ const Page = () => {
     const [priceRange, setPriceRange] = useState<[number, number]>([0, 50000000]);
 
     useEffect(() => {
-        AOS.init({ duration: 1000 });
+        AOS.init({
+            duration: 1000,
+            easing: 'ease-in-out',
+            once: false,
+            mirror: true
+        });
         const fetchData = async () => {
             const response = await ProductService.getAll({
                 page,
@@ -58,17 +63,19 @@ const Page = () => {
         <Layout className="min-h-screen bg-gray-100">
             {/* Main Content */}
             <main className="p-8">
-                <div className="mb-8">
+                <div className="mb-8" data-aos="fade-down">
                     <h2 className="text-2xl font-bold text-gray-700">Product</h2>
                 </div>
 
                 <Breadcrumb
                     className="mb-8"
-                    items={[{ title: "Home", href: "/" }, { title: "Products" }]}
+                    items={[{ title: "Home", className: "cursor-pointer hover:underline", onClick: () => router.push('/') }, { title: "Products" }]}
+                    data-aos="fade-right"
+                    data-aos-delay="100"
                 />
 
                 <Row gutter={[24, 24]}>
-                    <Col xs={24} sm={6} className="bg-white p-4 rounded-lg shadow-md">
+                    <Col xs={24} sm={6} className="bg-white p-4 rounded-lg shadow-md" data-aos="fade-right" data-aos-delay="200">
                         <div className="mb-4">
                             <h6 className="mb-2 text-gray-700">Sort by price</h6>
                             <Select
@@ -121,7 +128,7 @@ const Page = () => {
                     <Col xs={24} sm={18}>
                         <Row gutter={[24, 24]}>
                             {dataProduct.map((product, index) => (
-                                <Col key={index} xs={24} sm={12} md={8} lg={6} data-aos="fade-up">
+                                <Col key={index} xs={24} sm={12} md={8} lg={6}>
                                     <Card
                                         onClick={() => router.push(`/product/${product.slug}`)}
                                         hoverable
@@ -130,7 +137,7 @@ const Page = () => {
                                                 <Image
                                                     src={
                                                         product?.imageUrl ||
-                                                        "https://upload-aws-cls.s3.us-east-2.amazonaws.com/aothun.jpg"
+                                                        "/no-image.png"
                                                     }
                                                     alt={product.name}
                                                     width={200}
@@ -141,6 +148,9 @@ const Page = () => {
                                             </div>
                                         }
                                         className="text-center shadow-lg"
+                                        data-aos="zoom-in"
+                                        data-aos-delay={index * 100}
+                                        data-aos-duration="800"
                                     >
                                         <Card.Meta
                                             title={product.name}
@@ -152,7 +162,7 @@ const Page = () => {
                         </Row>
 
                         {dataProduct.length === 0 ? (
-                            <div className="text-center text-gray-700">No products found</div>
+                            <div className="text-center text-gray-700" data-aos="fade-up">No products found</div>
                         ) : (
                             <Pagination
                                 className="mt-8 text-center"
@@ -160,6 +170,8 @@ const Page = () => {
                                 pageSize={6}
                                 total={total}
                                 onChange={handlePageChange}
+                                data-aos="fade-up"
+                                data-aos-delay="200"
                             />
                         )}
                     </Col>

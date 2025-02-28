@@ -7,6 +7,7 @@ import { useState } from "react";
 import AccountService from "@/service/account.service";
 import { IAccount } from "@/helper/type";
 import { useAppContext } from "@/app/app-provider";
+import { useCartContext } from "@/app/cart-provider";
 import {
     BellOutlined,
     LogoutOutlined,
@@ -20,6 +21,7 @@ const AvatarBar = () => {
     const { accessToken, setAccessToken } = useAppContext();
     const [account, setAccount] = useState<IAccount | null>(null);
     const [isLogin, setIsLogin] = useState<boolean>(false);
+    const { updateCart } = useCartContext();
     useEffect(() => {
         const fetchData = async () => {
             const res = await AccountService.getProfile(accessToken || "");
@@ -35,6 +37,7 @@ const AvatarBar = () => {
         setAccessToken("");
         setIsLogin(false);
         setAccount(null);
+        updateCart();
     };
 
     const contentVerify = (

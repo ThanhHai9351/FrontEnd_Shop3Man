@@ -17,7 +17,12 @@ const CategoryPage = () => {
     const [total, setTotal] = useState<number>(0);
 
     useEffect(() => {
-        AOS.init({ duration: 1000 });
+        AOS.init({
+            duration: 1000,
+            easing: 'ease-in-out',
+            once: false,
+            mirror: true
+        });
         const fetchData = async () => {
             const response = await CategoryService.getAll({ page, limit: 6 });
             setDataCategory(response.data.data)
@@ -34,22 +39,27 @@ const CategoryPage = () => {
         <Layout className="min-h-screen">
             {/* Main Content */}
             <main className="p-8">
-                <div className="mb-8">
+                <div className="mb-8" data-aos="fade-down">
                     <h2 className="text-2xl font-bold text-gray-700">Popular Categories</h2>
                 </div>
 
-                <Breadcrumb className='mb-8' items={[{ title: 'Home', href: '/' }, { title: 'Categories', href: '/categories' }]} />
+                <Breadcrumb
+                    className='mb-8'
+                    items={[{ title: 'Home', className: "cursor-pointer hover:underline", onClick: () => router.push('/') }, { title: 'Category' }]}
+                    data-aos="fade-right"
+                    data-aos-delay="100"
+                />
 
                 <Row gutter={[24, 24]}>
                     {dataCategory.map((category, index) => (
-                        <Col key={index} xs={12} sm={8} md={6} lg={4} data-aos="fade-up" data-aos-delay={index * 100}>
+                        <Col key={index} xs={12} sm={8} md={6} lg={4}>
                             <Card
                                 onClick={() => router.push(`/category/${category.slug}`)}
                                 hoverable
                                 cover={
                                     <div className="p-4">
                                         <Image
-                                            src={category?.imageUrl || 'https://upload-aws-cls.s3.us-east-2.amazonaws.com/aothun.jpg'}
+                                            src={category?.imageUrl || '/no-image.png'}
                                             alt={category.name}
                                             width={200}
                                             height={200}
@@ -58,7 +68,10 @@ const CategoryPage = () => {
                                         />
                                     </div>
                                 }
-                                className="text-center"
+                                className="text-center shadow-lg"
+                                data-aos="zoom-in"
+                                data-aos-delay={index * 100}
+                                data-aos-duration="800"
                             >
                                 <Card.Meta title={category.name} />
                             </Card>
@@ -72,6 +85,8 @@ const CategoryPage = () => {
                     pageSize={6}
                     total={total}
                     onChange={handlePageChange}
+                    data-aos="fade-up"
+                    data-aos-delay="200"
                 />
             </main>
         </Layout>
