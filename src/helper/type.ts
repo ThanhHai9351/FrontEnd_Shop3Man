@@ -24,6 +24,8 @@ export interface IProduct {
 
 export interface IAccount {
     _id: string
+    email: string;
+    phone: string;
     firstName: string
     lastName: string
     avatarUrl: string
@@ -59,4 +61,12 @@ export interface ISize {
     createdAt: string;
     updatedAt: string;
     price: number;
+   }
+
+   export interface IAddress {
+    _id: string;
+    userId: string;
+    street: string;
+    city: string;
+    district: string;
    }
