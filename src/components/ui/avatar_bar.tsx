@@ -14,6 +14,7 @@ import {
     UserAddOutlined,
     UserOutlined,
     HeartOutlined,
+    ShoppingCartOutlined,
 } from "@ant-design/icons";
 import { Divider } from "antd";
 
@@ -53,6 +54,12 @@ const AvatarBar = () => {
                 className="hover:cursor-pointer block mb-3 text-gray-700 hover:text-gray-900 font-semibold flex items-center"
             >
                 <BellOutlined className="mr-2 text-indigo-500" /> Thông báo
+            </Link>
+            <Link
+                href="/order"
+                className="hover:cursor-pointer block mb-3 text-gray-700 hover:text-gray-900 font-semibold flex items-center"
+            >
+                <ShoppingCartOutlined className="mr-2 text-indigo-500" /> Đơn hàng
             </Link>
             <Link
                 href="/whistlist"
