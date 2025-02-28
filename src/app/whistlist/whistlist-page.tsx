@@ -22,7 +22,13 @@ const WhistlistPage = () => {
     const [priceRange, setPriceRange] = useState<[number, number]>([0, 50000000]);
     const { accessToken } = useAppContext();
     useEffect(() => {
-        AOS.init({ duration: 1000 });
+        AOS.init({
+            duration: 1000,
+            easing: 'ease-in-out-cubic',
+            once: false,
+            mirror: true,
+            offset: 100
+        });
         const fetchData = async () => {
             const response = await WhistlistService.getWhistlists({
                 page,
@@ -60,17 +66,19 @@ const WhistlistPage = () => {
         <Layout className="min-h-screen bg-gray-100">
             {/* Main Content */}
             <main className="p-8">
-                <div className="mb-8">
+                <div className="mb-8" data-aos="fade-down" data-aos-duration="800">
                     <h2 className="text-2xl font-bold text-gray-700">Whistlists</h2>
                 </div>
 
                 <Breadcrumb
                     className="mb-8"
-                    items={[{ title: "Home", href: "/" }, { title: "Whistlist" }]}
+                    items={[{ title: "Home", className: "cursor-pointer hover:underline", onClick: () => router.push('/') }, { title: "Whistlist" }]}
+                    data-aos="fade-right"
+                    data-aos-delay="100"
                 />
 
                 <Row gutter={[24, 24]}>
-                    <Col xs={24} sm={6} className="bg-white p-4 rounded-lg shadow-md">
+                    <Col xs={24} sm={6} className="bg-white p-4 rounded-lg shadow-md" data-aos="fade-right" data-aos-duration="1000">
                         <div className="mb-4">
                             <h6 className="mb-2 text-gray-700">Sort by price</h6>
                             <Select
@@ -123,7 +131,7 @@ const WhistlistPage = () => {
                     <Col xs={24} sm={18}>
                         <Row gutter={[24, 24]}>
                             {dataWhistlist.map((whistlist, index) => (
-                                <Col key={index} xs={24} sm={12} md={8} lg={6} data-aos="fade-up">
+                                <Col key={index} xs={24} sm={12} md={8} lg={6}>
                                     <Card
                                         onClick={() => router.push(`/product/${whistlist.product.slug}`)}
                                         hoverable
@@ -143,6 +151,9 @@ const WhistlistPage = () => {
                                             </div>
                                         }
                                         className="text-center shadow-lg"
+                                        data-aos="zoom-in"
+                                        data-aos-delay={index * 100}
+                                        data-aos-duration="800"
                                     >
                                         <Card.Meta
                                             title={whistlist.product.name}
@@ -154,7 +165,7 @@ const WhistlistPage = () => {
                         </Row>
 
                         {dataWhistlist.length === 0 ? (
-                            <div className="text-center text-gray-700">No products found</div>
+                            <div className="text-center text-gray-700" data-aos="fade-up">No products found</div>
                         ) : (
                             <Pagination
                                 className="mt-8 text-center"
@@ -162,6 +173,8 @@ const WhistlistPage = () => {
                                 pageSize={6}
                                 total={total}
                                 onChange={handlePageChange}
+                                data-aos="fade-up"
+                                data-aos-delay="200"
                             />
                         )}
                     </Col>

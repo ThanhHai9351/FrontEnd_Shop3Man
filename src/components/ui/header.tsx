@@ -1,8 +1,9 @@
 import Logo from '@/components/logo';
 import AvatarBar from '@/components/ui/avatar_bar';
 import ButtonShopnow from '@/components/ui/button-shopnow';
-import { SearchOutlined, ShoppingCartOutlined } from '@ant-design/icons';
-import { Badge, Input } from 'antd';
+import CartBar from '@/components/cart/cart-bar';
+import { SearchOutlined } from '@ant-design/icons';
+import { Input } from 'antd';
 import Link from 'next/link';
 import React from 'react';
 
@@ -25,9 +26,7 @@ const Header = async () => {
                     <Link className='text-gray-600 hover:text-gray-800 cursor-pointer underline text-xs sm:text-sm p-1 sm:p-2' href="/product">products</Link>
                 </div>
                 <AvatarBar />
-                <Badge count={5}>
-                    <ShoppingCartOutlined className="text-lg sm:text-xl transition-transform duration-300 ease-in-out hover:scale-110" />
-                </Badge>
+                <CartBar />
             </div>
         </nav>
     );

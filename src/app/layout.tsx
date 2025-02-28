@@ -11,6 +11,7 @@ import MenuBarShop from "@/components/ui/menu";
 import AppProvider from "@/app/app-provider";
 import { cookies } from "next/headers";
 import FooterShop from "@/components/ui/footer-shop";
+import { CartProvider } from "@/app/cart-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -43,12 +44,14 @@ export default async function RootLayout({
       >
         <ConfigProvider>
           <AppProvider initialAccessToken={accessToken}>
-            <Navbar />
-            <Header />
-            <MenuBarShop />
-            {children}
-            <FooterShop />
-            <Toaster />
+            <CartProvider>
+              <Navbar />
+              <Header />
+              <MenuBarShop />
+              {children}
+              <FooterShop />
+              <Toaster />
+            </CartProvider>
           </AppProvider>
         </ConfigProvider>
       </body>

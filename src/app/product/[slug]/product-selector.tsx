@@ -4,8 +4,8 @@ import { Button, Typography, Space, Card } from 'antd';
 import { formatPrice } from "@/helper/formatPrice"
 import { IProduct } from "@/helper/type"
 import React, { useEffect, useState, type FC } from "react"
-import { ShoppingCartOutlined } from '@ant-design/icons';
 import ButtonWhistlist from '@/app/product/[slug]/button-whistlist';
+import ButtonAddToCart from '@/app/product/[slug]/button-addToCart';
 
 const { Text, Paragraph } = Typography;
 
@@ -80,30 +80,7 @@ const ProductSelector: FC<Props> = ({ product }) => {
       </Space>
 
       <Space className="w-full gap-4">
-        <Button
-          type="dashed"
-          size="large"
-          icon={<ShoppingCartOutlined />}
-          className="
-        flex-1 
-        bg-blue-500 
-        hover:bg-blue-600 
-        text-white 
-        border-blue-500 
-        hover:border-blue-600 
-        transition-all 
-        duration-300 
-        shadow-md 
-        hover:shadow-lg 
-        rounded-lg 
-        px-6 
-        py-3 
-        font-semibold 
-        hover:scale-105
-      "
-        >
-          Thêm vào giỏ hàng
-        </Button>
+        <ButtonAddToCart size={selectedSize} color={selectedColor} productId={product._id} />
         <ButtonWhistlist product={product} />
       </Space>
     </Card>

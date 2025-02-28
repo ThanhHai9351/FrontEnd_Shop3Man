@@ -48,3 +48,15 @@ export interface ISize {
     createdAt: string;  
     updatedAt: string;
    }
+
+   export interface ICart {
+    _id: string;
+    userId: string;
+    product: IProduct;
+    quantity: number;
+    size: number;
+    color: string;
+    createdAt: string;
+    updatedAt: string;
+    price: number;
+   }
