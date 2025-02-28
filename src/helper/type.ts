@@ -70,3 +70,17 @@ export interface ISize {
     city: string;
     district: string;
    }
+
+   export interface IOrder {
+    _id: string;
+    userId: string;
+    items: ICart[];
+    totalMoney: number;
+    quantity_item: number;
+    status: string;
+    address: IAddress;
+    paymentMethod: string;
+    paidAt: Date;
+    createdAt: string;
+    updatedAt: string;
+   }

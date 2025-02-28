@@ -34,7 +34,7 @@ const CartBar = () => {
         }
     };
 
-    const totalAmount = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    const totalAmount = cartItems.reduce((sum, item) => sum + (item.price), 0);
 
     return (
         <>
