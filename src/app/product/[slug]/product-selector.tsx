@@ -1,7 +1,7 @@
 "use client"
 
 import { Button, Typography, Space, Card } from 'antd';
-import { formatPrice } from "@/helper/formatPrice"
+import { formatPrice } from "@/helper/format"
 import { IProduct } from "@/helper/type"
 import React, { useEffect, useState, type FC } from "react"
 import ButtonWhistlist from '@/app/product/[slug]/button-whistlist';

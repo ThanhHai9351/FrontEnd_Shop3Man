@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { formatPrice } from "@/helper/formatPrice";
+import { formatPrice } from "@/helper/format";
 import WhistlistService from "@/service/whistlist.service";
 import { useAppContext } from "@/app/app-provider";
 const { Option } = Select;

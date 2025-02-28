@@ -71,7 +71,7 @@ const CartBar = () => {
                         {cartItems.map((item) => (
                             <div key={item._id} className="flex gap-4 border-b pb-4">
                                 <Image
-                                    src={item.product?.imageUrl || 'https://upload-aws-cls.s3.us-east-2.amazonaws.com/aothun.jpg'}
+                                    src={item.product?.imageUrl || '/no-image.png'}
                                     alt={item.product?.name || ''}
                                     width={120}
                                     height={120}

@@ -2,8 +2,7 @@ import Logo from '@/components/logo';
 import AvatarBar from '@/components/ui/avatar_bar';
 import ButtonShopnow from '@/components/ui/button-shopnow';
 import CartBar from '@/components/cart/cart-bar';
-import { SearchOutlined } from '@ant-design/icons';
-import { Input } from 'antd';
+import TextBar from '@/components/ui/text-bar';
 import Link from 'next/link';
 import React from 'react';
 
@@ -13,11 +12,7 @@ const Header = async () => {
             <div className="flex items-center gap-4 sm:gap-8">
                 <Logo width={40} className='text-black' />
                 <ButtonShopnow />
-                <Input
-                    placeholder="What are you looking for..."
-                    prefix={<SearchOutlined />}
-                    className="w-40 sm:w-64 transition-all duration-300 ease-in-out focus:w-48 sm:focus:w-72"
-                />
+                <TextBar />
             </div>
 
             <div className="flex items-center gap-2 sm:gap-4 mt-2 sm:mt-0">

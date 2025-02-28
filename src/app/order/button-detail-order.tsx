@@ -1,7 +1,7 @@
 import { ICart, IOrder } from "@/helper/type";
 import { Button, Modal, Table, Typography, Descriptions } from "antd";
 import React, { useState } from "react";
-import { formatPrice } from "@/helper/formatPrice";
+import { formatPrice } from "@/helper/format";
 import Image from "next/image";
 
 const { Title } = Typography;
@@ -81,8 +81,8 @@ const ButtonDetailOrder = ({ order }: { order: IOrder }) => {
                     <Descriptions.Item label="Status">
                         <span
                             className={`px-2 py-1 rounded-md ${order.status === "success"
-                                    ? "bg-green-100 text-green-600"
-                                    : "bg-red-100 text-red-600"
+                                ? "bg-green-100 text-green-600"
+                                : "bg-red-100 text-red-600"
                                 }`}
                         >
                             {order.status}

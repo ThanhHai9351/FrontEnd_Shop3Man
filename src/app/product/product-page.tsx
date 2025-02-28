@@ -8,7 +8,7 @@ import Image from "next/image";
 import ProductService from "@/service/product.service";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { formatPrice } from "@/helper/formatPrice";
+import { formatPrice } from "@/helper/format";
 
 const { Option } = Select;
 

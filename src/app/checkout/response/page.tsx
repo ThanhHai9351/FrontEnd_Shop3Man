@@ -6,6 +6,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import CartService from '@/service/cart.service';
 
 const Page = () => {
     const [state, setState] = useState("loading");
@@ -53,6 +54,7 @@ const Page = () => {
             })
             if (response.RspCode === "00") {
                 setState("success");
+                await CartService.removeAll({ token: accessToken || "" });
             } else {
                 setState("error");
             }

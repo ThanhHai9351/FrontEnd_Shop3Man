@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useCartContext } from "@/app/cart-provider";
 import { useAppContext } from "@/app/app-provider";
 import { useRouter } from "next/navigation";
-import { formatPrice } from "@/helper/formatPrice";
+import { formatPrice } from "@/helper/format";
 import VnpayService from "@/service/vnpay.service";
 import { toast } from "sonner";
 import UserAddressService from "@/service/user-address.service";

@@ -6,10 +6,11 @@ import { IOrder } from '@/helper/type';
 import OrderService from '@/service/order.service';
 import { useAppContext } from '../app-provider';
 import { useRouter } from 'next/navigation';
-import { formatPrice } from '@/helper/formatPrice';
+import { formatPrice } from '@/helper/format';
 import ButtonDetailOrder from '@/app/order/button-detail-order';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { formatDate } from '../../helper/format';
 
 const OrderPage = () => {
     const router = useRouter();
@@ -66,7 +67,7 @@ const OrderPage = () => {
             title: 'Payment Date',
             dataIndex: 'paidAt',
             key: 'paidAt',
-            render: (date) => <span data-aos="fade-right" data-aos-delay="300">{date ? new Date(date).toLocaleDateString() : 'N/A'}</span>,
+            render: (date) => <span data-aos="fade-right" data-aos-delay="300">{formatDate(date)}</span>,
         },
         {
             title: 'Payment Method',
