@@ -15,6 +15,7 @@ import {
     UserOutlined,
     HeartOutlined,
     ShoppingCartOutlined,
+    MessageOutlined,
 } from "@ant-design/icons";
 import { Divider } from "antd";
 
@@ -26,6 +27,8 @@ const AvatarBar = () => {
     useEffect(() => {
         const fetchData = async () => {
             const res = await AccountService.getProfile(accessToken || "");
+            Cookies.set("userId", res.data._id);
+            Cookies.set("user", JSON.stringify(res.data));
             setAccount(res.data);
             setIsLogin(true);
         };
@@ -35,6 +38,8 @@ const AvatarBar = () => {
     const handleLogout = () => {
         Cookies.remove("accessToken");
         Cookies.remove("refreshToken");
+        Cookies.remove("userId");
+        Cookies.remove("user");
         setAccessToken("");
         setIsLogin(false);
         setAccount(null);
@@ -66,6 +71,12 @@ const AvatarBar = () => {
                 className="hover:cursor-pointer block mb-3 text-gray-700 hover:text-gray-900 font-semibold flex items-center"
             >
                 <HeartOutlined className="mr-2 text-indigo-500" /> Danh sách yêu thích
+            </Link>
+            <Link
+                href="/social"
+                className="hover:cursor-pointer block mb-3 text-gray-700 hover:text-gray-900 font-semibold flex items-center"
+            >
+                <MessageOutlined className="mr-2 text-indigo-500" /> Chế độ mạng xã hội
             </Link>
             <Divider />
             <p

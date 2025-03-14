@@ -84,3 +84,22 @@ export interface ISize {
     createdAt: string;
     updatedAt: string;
    }
+
+   export interface IConversation {
+    _id: string;
+    type: string;
+    name: string;
+    members: string[];
+    lastMessage: string;
+    createdAt: string;
+    updatedAt: string;
+   }
+
+   export interface IMessage {
+    _id: string;
+    conversationId: string;
+    senderId: string;
+    content: string;
+    createdAt: string;
+    updatedAt: string;
+   }

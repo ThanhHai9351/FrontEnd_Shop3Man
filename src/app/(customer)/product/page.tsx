@@ -1,4 +1,4 @@
-import ProductPage from '@/app/product/product-page';
+import ProductPage from '@/app/(customer)/product/product-page';
 import React from 'react';
 import { Metadata } from 'next';
 export const metadata: Metadata = {

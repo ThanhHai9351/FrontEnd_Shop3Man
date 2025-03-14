@@ -4,14 +4,15 @@ import React, { useState, useCallback } from "react";
 import { SearchOutlined } from "@ant-design/icons";
 import ProductService from "@/service/product.service";
 import { IProduct } from "@/helper/type";
-import Link from "next/link";
 import Image from "next/image";
 import { debounce } from 'lodash';
+import { useRouter } from "next/navigation";
 
 const TextBar = () => {
     const [searchTerm, setSearchTerm] = useState("");
     const [searchResults, setSearchResults] = useState<IProduct[]>([]);
     const [loading, setLoading] = useState(false);
+    const router = useRouter();
 
     const handleSearch = useCallback(
         debounce(async (value: string) => {
@@ -62,9 +63,12 @@ const TextBar = () => {
                             dataSource={searchResults}
                             renderItem={(item) => (
                                 <List.Item key={item._id} className="hover:bg-gray-100 transition">
-                                    <Link
-                                        href={`/product/${item.slug}`}
-                                        className="flex items-center gap-3 w-full"
+                                    <p
+                                        onClick={() => {
+                                            setSearchTerm("");
+                                            router.push(`/product/${item.slug}`);
+                                        }}
+                                        className="flex items-center gap-3 w-full cursor-pointer"
                                     >
                                         <Image
                                             src={item.imageUrl || '/no-image.png'}
@@ -73,8 +77,8 @@ const TextBar = () => {
                                             width={40}
                                             height={40}
                                         />
-                                        <span className="truncate">{item.name}</span>
-                                    </Link>
+                                        <span className="truncate hover:text-blue-500">{item.name}</span>
+                                    </p>
                                 </List.Item>
                             )}
                             locale={{ emptyText: 'No results found' }}

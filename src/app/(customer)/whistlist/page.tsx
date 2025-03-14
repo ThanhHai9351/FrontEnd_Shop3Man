@@ -1,6 +1,6 @@
 import React from 'react';
 import { Metadata } from 'next';
-import WhistlistPage from '@/app/whistlist/whistlist-page';
+import WhistlistPage from '@/app/(customer)/whistlist/whistlist-page';
 
 export const metadata: Metadata = {
     title: "Danh sách yêu thích",

@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Inter } from "next/font/google";
-import "./globals.css";
-import { ConfigProvider } from "antd";
-import AppProvider from "@/app/app-provider";
-import { cookies } from "next/headers";
-import { Toaster } from "sonner";
+import { Geist, Geist_Mono } from "next/font/google";
+import "../globals.css";
+import { Inter } from 'next/font/google';
+import 'antd/dist/reset.css';
+import Navbar from "@/components/ui/navbar";
+import Header from "@/components/ui/header";
+import MenuBarShop from "@/components/ui/menu";
+import FooterShop from "@/components/ui/footer-shop";
+import { CartProvider } from "@/app/cart-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,19 +31,19 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const cookieStore = await cookies();
-  const accessToken = cookieStore.get("accessToken")?.value || "";
+
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased ${inter.className} bg-white`}
       >
-        <ConfigProvider>
-          <AppProvider initialAccessToken={accessToken}>
-            {children}
-            <Toaster />
-          </AppProvider>
-        </ConfigProvider>
+        <CartProvider>
+          <Navbar />
+          <Header />
+          <MenuBarShop />
+          {children}
+          <FooterShop />
+        </CartProvider>
       </body>
     </html>
   );
