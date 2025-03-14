@@ -5,8 +5,8 @@ import { Button } from 'antd';
 import Title from 'antd/es/typography/Title';
 import React, { useState, useEffect } from 'react';
 import UserAddressService from '@/service/user-address.service';
-import DialogCreateAddress from '@/app/profile/dialog-create-address';
-import ButtonDeleteAddress from '@/app/profile/button-delete-address';
+import DialogCreateAddress from '@/app/(customer)/profile/dialog-create-address';
+import ButtonDeleteAddress from '@/app/(customer)/profile/button-delete-address';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 

@@ -4,13 +4,13 @@ import { Breadcrumb, Divider, Table, Tag } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import { IOrder } from '@/helper/type';
 import OrderService from '@/service/order.service';
-import { useAppContext } from '../app-provider';
+import { useAppContext } from '../../app-provider';
 import { useRouter } from 'next/navigation';
 import { formatPrice } from '@/helper/format';
-import ButtonDetailOrder from '@/app/order/button-detail-order';
+import ButtonDetailOrder from '@/app/(customer)/order/button-detail-order';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { formatDate } from '../../helper/format';
+import { formatDate } from '../../../helper/format';
 
 const OrderPage = () => {
     const router = useRouter();

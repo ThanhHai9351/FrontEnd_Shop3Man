@@ -1,4 +1,4 @@
-import ProductDetailPage from '@/app/product/[slug]/product-detail-page';
+import ProductDetailPage from '@/app/(customer)/product/[slug]/product-detail-page';
 import React from 'react';
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {

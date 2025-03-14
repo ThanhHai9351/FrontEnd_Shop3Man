@@ -18,6 +18,16 @@ const register = (data: DTORegister) => apiRequest('/auth/register', 'POST', '',
 
 const getProfile = (token: string) => apiRequest('/user/me', 'GET', token);
 
-const AccountService = { login, register, getProfile };
+const getAllAccounts = (token: string, data: { page?: number, limit?: number, search?: string }) => {
+    const params = new URLSearchParams();
+    if (data.page) params.set('page', data.page.toString());
+    if (data.limit) params.set('limit', data.limit.toString());
+    if (data.search) params.set('search', data.search);
+    return apiRequest(`/user?${params.toString()}`, 'GET', token);
+};
+
+const getDetailAccount = (token: string, id: string) => apiRequest(`/user/${id}`, 'GET', token);
+
+const AccountService = { login, register, getProfile, getAllAccounts , getDetailAccount};
 
 export default AccountService;

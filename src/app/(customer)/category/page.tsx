@@ -1,4 +1,4 @@
-import CategoryPage from '@/app/category/category-page';
+import CategoryPage from '@/app/(customer)/category/category-page';
 import React from 'react';
 import { Metadata } from 'next';
 

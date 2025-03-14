@@ -5,7 +5,7 @@ import { UserOutlined, HomeOutlined, SettingOutlined } from '@ant-design/icons';
 import { useAppContext } from '@/app/app-provider';
 import AccountService from '@/service/account.service';
 import { IAccount } from '@/helper/type';
-import AddressSelector from '@/app/profile/address-selector';
+import AddressSelector from '@/app/(customer)/profile/address-selector';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 

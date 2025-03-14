@@ -4,8 +4,8 @@ import { Button, Typography, Space, Card } from 'antd';
 import { formatPrice } from "@/helper/format"
 import { IProduct } from "@/helper/type"
 import React, { useEffect, useState, type FC } from "react"
-import ButtonWhistlist from '@/app/product/[slug]/button-whistlist';
-import ButtonAddToCart from '@/app/product/[slug]/button-addToCart';
+import ButtonWhistlist from '@/app/(customer)/product/[slug]/button-whistlist';
+import ButtonAddToCart from '@/app/(customer)/product/[slug]/button-addToCart';
 
 const { Text, Paragraph } = Typography;
 

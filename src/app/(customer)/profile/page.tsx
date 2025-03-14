@@ -1,4 +1,4 @@
-import ProfilePape from '@/app/profile/profile-pape';
+import ProfilePape from '@/app/(customer)/profile/profile-pape';
 import { Metadata } from 'next';
 import React from 'react';
 

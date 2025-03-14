@@ -4,7 +4,7 @@ import { Layout, Row, Col, Breadcrumb } from 'antd';
 import Image from 'next/image';
 import ProductService from '@/service/product.service';
 import { IProduct } from '@/helper/type';
-import ProductSelector from '@/app/product/[slug]/product-selector';
+import ProductSelector from '@/app/(customer)/product/[slug]/product-selector';
 import { useAppContext } from '@/app/app-provider';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
